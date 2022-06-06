@@ -25,3 +25,5 @@
 - Each book and member card will have a unique barcode. The system will be able to read barcodes from books and members library cards.
 
 ### Use case diagram
+
+![Image](https://github.com/piyushmani/object-oriented-design-python/blob/f7e3d15691bad10da22988c750d75347172cd4e3/Library%20Management%20System/images/Uml_Diagram%20(3).svg)
