@@ -26,10 +26,12 @@
 
 ### Use case diagram
 ------------
+<img src="https://github.com/piyushmani/object-oriented-design-python/blob/f7e3d15691bad10da22988c750d75347172cd4e3/Library%20Management%20System/images/Uml_Diagram%20(3).svg" width="40%" height="20%">
 
-![Image](https://github.com/piyushmani/object-oriented-design-python/blob/f7e3d15691bad10da22988c750d75347172cd4e3/Library%20Management%20System/images/Uml_Diagram%20(3).svg)
 
 ### Class diagram
 ------------
 
-![Image](https://github.com/piyushmani/object-oriented-design-python/blob/97c102a4bc2aa0c31c1ebfa002ed49eb42f140a3/Library%20Management%20System/images/class_diagram.svg)
+<img src="https://github.com/piyushmani/object-oriented-design-python/blob/97c102a4bc2aa0c31c1ebfa002ed49eb42f140a3/Library%20Management%20System/images/class_diagram.svg" width="60%" height="20%">
+
+
