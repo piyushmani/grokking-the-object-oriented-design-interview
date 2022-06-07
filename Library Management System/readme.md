@@ -38,9 +38,6 @@
 ------------
 
 ####  Book checkout 
-
-
-
 ```mermaid
 %%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
 flowchart TD
@@ -63,8 +60,34 @@ flowchart TD
     F -->|No| G -->H -->I -->J -->K-->Z
     Y[Show error message]
     Z[End]
-    Y -->Z
-      
+    Y -->Z 
 ```
+#### Return a book
+```mermaid
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
+flowchart TD
+    A[Start] --> B
+    B(Member scan barcode of the book) --> C
+    C(System fetches book`s details ) --> D
+    D{{System checks if book is being returned within the due date ??}}
+    E(Calculate fine)
+    F(Create transaction for the fine collection)
+    G(Collect fine)
+    H{{ System decrements the number of book issued to the member}}
+    I{{System checks if book is reserved by any member ??}}
+    J(System update the status of the book to reserved)
+    K(System update the status of the book to available)
+    L(system sends notification to the member who has reserved the book about the availibilty of the book)
+    Z(End)
+    D -->|No| E
+    D --> |Yes| H
+    E -->F-->G-->H
+    H -->I
+    I -->|No| K -->Z
+    I -->|Yes|J
+    J  -->L -->Z
+```
+
+
 
 
