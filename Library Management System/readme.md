@@ -37,7 +37,9 @@
 ####  Book checkout 
 
 
+
 ```mermaid
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":false}} }%%
 flowchart TD
     A[Start] --> B
     B(Member scan their library card) --> C
@@ -59,8 +61,7 @@ flowchart TD
     Y[Show error message]
     Z[End]
     Y -->Z
-    
-    
+      
 ```
 
 
