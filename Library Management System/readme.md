@@ -34,19 +34,22 @@
 
 <img src="https://github.com/piyushmani/object-oriented-design-python/blob/97c102a4bc2aa0c31c1ebfa002ed49eb42f140a3/Library%20Management%20System/images/class_diagram.svg" width="60%" height="20%">
 
+### Activity diagrams
+------------
+
 ####  Book checkout 
 
 
 
 ```mermaid
-%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":false}} }%%
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
 flowchart TD
     A[Start] --> B
     B(Member scan their library card) --> C
     C(Scan barcode of book) --> D
-    D{Checks if book can be issued or not ??}
-    E{ Checks numner of book  issued  to the member}
-    F{Checks if book has been reserved by any other member ??}
+    D{{Checks if book can be issued or not ??}}
+    E{{ Checks numner of book  issued  to the member}}
+    F{{Checks if book has been reserved by any other member ??}}
     G[Create book checkout transaction]
     H[Update Book status to Loaned]
     I[Increment book issued to the member]
