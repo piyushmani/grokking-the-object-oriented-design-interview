@@ -1,6 +1,6 @@
 ## Library Management System
 
-![logo](https://shrisoftware.co.in/wp-content/uploads/2020/11/library.png)
+<img src="https://github.com/piyushmani/object-oriented-design-python/blob/a426c5935d670b7df8bb1b45a42d34474fb0abf2/Library%20Management%20System/images/library.png" width="50%" height="40%">
 
 **Table of Contents**
 
