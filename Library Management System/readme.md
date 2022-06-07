@@ -87,6 +87,31 @@ flowchart TD
     I -->|Yes|J
     J  -->L -->Z
 ```
+#### Renew a book
+```mermaid
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
+flowchart TD
+    A[Start] 
+    B(Member scans their library card through barcode reade) 
+    C(Member scans barcode of the book and selects to renew the book)
+    D(System fetches book`s details ) 
+    E{{Check if the book has been returned within due date ??}}
+    F[Calculate fine]
+    G[Create transactionyes for fine collection]
+    H[Collect fine]
+    I[ Check if the book has been reserved by any other member ??]
+    J[Show error message that the book can't be issued]
+    K[Update the status of the book to 'Reserved']
+    L[Create book checkout transaction with new due date]
+    M[Send notification to thee member who has reserved the book that the book has become available]
+    Z(End)
+
+    A-->B-->C-->D-->E
+    E --> |No| F -->G-->H-->I
+    E --> |Yes| I
+    I -->|yes| J-->K-->M-->Z
+    I-->|No|L-->Z
+```
 
 
 
