@@ -34,4 +34,33 @@
 
 <img src="https://github.com/piyushmani/object-oriented-design-python/blob/97c102a4bc2aa0c31c1ebfa002ed49eb42f140a3/Library%20Management%20System/images/class_diagram.svg" width="60%" height="20%">
 
+####  Book checkout 
+
+
+```mermaid
+flowchart TD
+    A[Start] --> B
+    B(Member scan their library card) --> C
+    C(Scan barcode of book) --> D
+    D{Checks if book can be issued or not ??}
+    E{ Checks numner of book  issued  to the member}
+    F{Checks if book has been reserved by any other member ??}
+    G[Create book checkout transaction]
+    H[Update Book status to Loaned]
+    I[Increment book issued to the member]
+    J[Mark reservation completed that member has made against this book]
+    K[Show success message]
+    D -->|No| Y 
+    D -->|Yes| E
+    E -->|max quato Excedded|Y 
+    E -->|else| F
+    F -->|Yes | Y 
+    F -->|No| G -->H -->I -->J -->K-->Z
+    Y[Show error message]
+    Z[End]
+    Y -->Z
+    
+    
+```
+
 
