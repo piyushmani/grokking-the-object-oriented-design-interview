@@ -162,7 +162,41 @@ class Person(ABC):
 class Constants:
     MAX_BOOKS_ISSUED_TO_A_USER: int = 5
     MAX_LENDING_DAYS: int = 10
+    
+```
+###### Rack, Book and BookItem
 
+```python
+from abc import ABC
+from dataclasses import dataclass
+import datetime
+
+@dataclass
+class Rack:
+    number:int 
+    location_identifie: str
+    
+@dataclass
+class Book(ABC):
+    ISBN: str 
+    title: str 
+    subject: str 
+    publisher: str
+    language: str 
+    number_of_pages: int 
+    authors: list[str]
+
+@dataclass
+class BookItem(Book):
+    barcode: str 
+    is_reference_only: str
+    borrowed: bool
+    due_date: datetime.date
+    price : float 
+    status: BookStatus
+    date_of_purchase: datetime.date
+    publication_date: datetime.date
+    placed_at: Rack
 ```
 
 
