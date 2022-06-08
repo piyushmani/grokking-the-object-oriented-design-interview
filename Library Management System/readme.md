@@ -113,6 +113,58 @@ flowchart TD
     I-->|No|L-->Z
 ```
 
+### Code
+
+------------
+
+
+
+ Below is the code for book checkout, book return and book renew.
+ 
+ > ***Note => In below code the database implementation and payment implementation are skiped.***
+ 
+ ###### Enums and Constants
+ 
+ 
+ ```python
+from abc import ABC
+from enum import Enum
+from dataclasses import dataclass
+
+class BookFormat(Enum):
+    HARDCOVER, PAPERBACK, AUDIO_BOOK, EBOOK, NEWSPAPER, MAGAZINE, JOURNAL = 1, 2, 3, 4, 5, 6, 7
+
+class BookStatus(Enum):
+    AVAILABLE, RESERVED, LOANED, LOST = 1, 2, 3, 4
+
+class ReservationStatus(Enum):
+    WAITING, PENDING, CANCELED, NONE = 1, 2, 3, 4
+
+class AccountStatus(Enum):
+    ACTIVE, CLOSED, CANCELED, BLACKLISTED, NONE = 1, 2, 3, 4, 5
+
+@dataclass
+class Address:
+    street_address: str 
+    city: str
+    state: str
+    zip_code: int
+    country: str   
+
+@dataclass
+class Person(ABC):
+    name: str 
+    address: Address
+    email: str
+    phone: str  
+
+@dataclass
+class Constants:
+    MAX_BOOKS_ISSUED_TO_A_USER: int = 5
+    MAX_LENDING_DAYS: int = 10
+
+```
+
 
 
 
