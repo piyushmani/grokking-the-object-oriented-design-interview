@@ -358,7 +358,7 @@ class Search(ABC):
 @dataclass
 class Catalog(Search):
     book_titles:dict
-    ook_authors: dict
+    book_authors: dict
     book_publication_dates: dict
     book_subjects: dict
 
