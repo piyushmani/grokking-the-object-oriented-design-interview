@@ -334,8 +334,43 @@ class Fine:
   
     def collect_fine(self, member_id, days):
         None
-
 ```
+
+###### Search and Catalog
+
+```python
+from abc import ABC
+from dataclasses import dataclass
+
+class Search(ABC):
+  def search_by_title(self, title):
+    None
+
+  def search_by_author(self, author):
+    None
+
+  def search_by_subject(self, subject):
+    None
+
+  def search_by_pub_date(self, publish_date):
+    None
+
+@dataclass
+class Catalog(Search):
+    book_titles:dict
+    ook_authors: dict
+    book_publication_dates: dict
+    book_subjects: dict
+
+    def search_by_title(self, query):
+        # return all books containing the string query in their title.
+        return self.__book_titles.get(query)
+
+    def search_by_author(self, query):
+        # return all books containing the string query in their author's name.
+        return self.__book_authors.get(query)
+```
+
 
 
 
