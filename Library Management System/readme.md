@@ -4,7 +4,7 @@
 
 **Table of Contents**
 
-- [System Requirements](https://github.com/hillaryfraley/jobbriefings#purpose)
+- [System Requirements](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#system-requirements)
 - [Use case diagram](https://github.com/hillaryfraley/jobbriefings#scope)
 - [Class diagram](https://github.com/hillaryfraley/jobbriefings#work-practice)
 - [Activity diagrams](https://github.com/hillaryfraley/jobbriefings#daily-briefing)
