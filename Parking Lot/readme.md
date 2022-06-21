@@ -26,7 +26,7 @@
 
 ```mermaid
 classDiagram
-    
+    direction LR
     class ParkingLot{
       id: string
       address: Location
@@ -51,8 +51,94 @@ classDiagram
       electricFreeSpot()
       showEmptySpotNumber()
     }
+    class ParkingRate{
+      hourNumber: int 
+      rate: double
+    }
+    class ParkingSpot{
+      number: string
+      free: bool
+      type: ParkingSlotType
+      getlsFree(): bool
+    }
+    class EntrancePanel{
+      id: string
+      printTicket(): bool
+    }
+
+    class ExitPanel{
+      id: string
+      ScanTicket()
+      processPayment()
+    }
+
+    class ParkingAttendantPortal{
+      id : string
+      scanTicket()
+      processPayment()
+    }
+
+    class CustomerlinfoPortal{
+      id: string
+      scanTicket()
+      processPayment()
+    }
+
+    class Vehicle{
+      licenseNumber: string
+      type: Vehicle 
+      assignTicket()
+    }
+    class ParkingTicket{
+      tocketNumber: string
+      issuedAt: datetime
+      payedAt: datetime
+      payedAmount: double
+      status: ParkingTicketStatus
+    }
+
+    class Car{
+    }
+    class Truck{
+    }
+    class Van{
+    }
+    class MoterBike{
+    }
+    class HandicappedSpot{
+    }
+    class CompactSpot{
+    }
+    class LargeSpot{
+    }
+    class MotorbikeSpot{
+    }
+    class ElectricSpot{
+    }
+
 
     ParkingLot *-- ParkingFloor
-    ParkingFloor *-- ParkingDisplayBoard  
+    ParkingLot *-- ParkingRate
+    ParkingFloor *-- ParkingDisplayBoard 
+    ParkingFloor *-- ParkingSpot
+    ParkingFloor *-- CustomerlinfoPortal 
+    ParkingLot *-- EntrancePanel 
+    ParkingLot *-- ExitPanel 
+    ParkingLot *-- ParkingAttendantPortal
 
+    Vehicle --> ParkingTicket : has
+    ParkingSpot --> Vehicle : has
+    Car --|> Vehicle : Extends
+    Truck --|> Vehicle : Extends
+    Van --|> Vehicle : Extends
+    MoterBike --|> Vehicle : Extends
+    HandicappedSpot --|> ParkingSpot : Extends
+    CompactSpot --|> ParkingSpot : Extends
+    LargeSpot --|> ParkingSpot : Extends
+    ElectricSpot --|> ParkingSpot : Extends
+    MotorbikeSpot --|> ParkingSpot : Extends
+
+
+
+            
 ```
