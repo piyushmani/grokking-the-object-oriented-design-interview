@@ -25,6 +25,7 @@
 ------------
 
 ```mermaid
+
 classDiagram
     direction LR
     class ParkingLot{
@@ -116,6 +117,18 @@ classDiagram
     class ElectricSpot{
     }
 
+    class Account{
+      userName: string
+      password: string
+      status: AccountStatus
+    }
+    class ParkingAttendant{
+      processTicket()
+    }
+    class Admin{
+        AddParkingFloor()
+    }
+
 
     ParkingLot *-- ParkingFloor
     ParkingLot *-- ParkingRate
@@ -137,8 +150,8 @@ classDiagram
     LargeSpot --|> ParkingSpot : Extends
     ElectricSpot --|> ParkingSpot : Extends
     MotorbikeSpot --|> ParkingSpot : Extends
-
-
-
+    Admin --|> Account : Extends
+    ParkingAttendant --|> Account : Extends
+    ParkingAttendant --> ParkingTicket : process
             
 ```
