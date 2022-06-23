@@ -155,3 +155,7 @@ classDiagram
     ParkingAttendant --> ParkingTicket : process
             
 ```
+
+
+### Activity diagram
+------------
