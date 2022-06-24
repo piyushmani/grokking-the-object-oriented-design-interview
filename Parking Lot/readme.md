@@ -25,7 +25,7 @@
 ------------
 
 ```mermaid
-
+%%{init: { "theme": "neutral"} }%%
 classDiagram
     direction LR
     class ParkingLot{
