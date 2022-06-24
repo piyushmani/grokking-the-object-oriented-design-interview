@@ -165,7 +165,7 @@ classDiagram
 flowchart TD
     A[Start] --> B
     B(Customer inserts the parking ticket in the exit panel) --> C
-    C(System scans the parking ticket and fetches ticket's details) --> D{{ fa:fa-twitter Ticket already paid ??}}
+    C(System scans the parking ticket and fetches ticket's details) --> D{{Ticket already paid ??}}
     E(System calculates the total parking fee)
     F(System shows the total parking fee on the display panel and ask for the credit card details)
     G(Customer inserts the credit card in the card reader)
@@ -187,6 +187,17 @@ flowchart TD
     M -->|Yes| N --> Y
     M --> |No| Y
     Y(System send signal the signal to open parking gate) --> Z(End)
+    
+    classDef se fill:#FDFCFC, color:#283747,stroke:#6F6A68,stroke-width:2px
+    classDef normal fill:#FDFCFC, color:#283747,stroke:#6F6A68,stroke-width:1px
+    classDef question fill:#FDFCFC, color:#283747,stroke:#283747,stroke-width:1.5px,stroke-dasharray:3
+    classDef success fill:#FDFCFC, color:#73C6B6,stroke:#283747
+    classDef error fill:#FDFCFC, color:#EC7063 ,stroke:#283747
+    class A,Z se
+    class B,C,E,F,G,H,N,Y,O normal
+    class D,I,M,K question
+    class L success
+    class J error
  
  ```
     
