@@ -159,3 +159,34 @@ classDiagram
 
 ### Activity diagram
 ------------
+```mermaid
+
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
+flowchart TD
+    A[Start] --> B
+    B(Customer inserts the parking ticket in the exit panel) --> C
+    C(System scans the parking ticket and fetches ticket's details) --> D{{ fa:fa-twitter Ticket already paid ??}}
+    E(System calculates the total parking fee)
+    F(System shows the total parking fee on the display panel and ask for the credit card details)
+    G(Customer inserts the credit card in the card reader)
+    H(System reads the credit card details and processes the payment)
+    I{{Payment Successtull ??}}
+    J(system show the error)
+    K{{Try again ??}}
+    L(System shows success message)
+    M{{Print receipt ??}}
+    N(System prints  the receipt)
+    O(Pay using cash)
+
+    D -->|Yes| Y
+    D --> |No| E --> F --> G --> H -->I
+    I --> |No| J --> K
+    K --> |Yes| G
+    K --> |No| O --> L
+    I --> |Yes|L --> M
+    M -->|Yes| N --> Y
+    M --> |No| Y
+    Y(System send signal the signal to open parking gate) --> Z(End)
+ 
+ ```
+    
