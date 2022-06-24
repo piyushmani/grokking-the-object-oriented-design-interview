@@ -198,6 +198,7 @@ flowchart TD
     class D,I,M,K question
     class L success
     class J error
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 stroke:#6F6A68,stroke-width:1.2px,color:#6F6A68
  
  ```
     
