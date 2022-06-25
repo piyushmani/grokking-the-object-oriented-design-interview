@@ -7,6 +7,8 @@
 - [Activity diagrams](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#activity-diagrams)
 - [Code](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#code)
 
+## Looking for contributors
+
 ### System Requirements
 - The parking lot should have multiple floors where customers can park their cars.
 - The parking lot should have multiple entry and exit points.
