@@ -203,4 +203,45 @@ flowchart TD
     linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 stroke:#6F6A68,stroke-width:1.2px,color:#6F6A68
  
  ```
+ 
+### Code
+------------
+
+> ***Note => In below code the database implementation and payment implementation are skiped.***
+ 
+ ###### Enums and Constants
+ 
+  ```python
+  from abc import ABC
+from enum import Enum
+from dataclasses import dataclass
+
+class VehicleType(Enum):
+    CAR, TRUCK, ELECTRIC, VAN, MOTORBIKE = 1, 2, 3, 4, 5
+
+class ParkingSpotType(Enum):
+    HANDICAPPED, COMPACT, LARGE, MOTORBIKE, ELECTRIC = 1, 2, 3, 4, 5
+
+class AccountStatus(Enum):
+    ACTIVE, BLOCKED, BANNED, COMPROMISED, ARCHIVED, UNKNOWN = 1, 2, 3, 4, 5, 6
+
+class ParkingTicketStatus(Enum):
+    ACTIVE, PAID, LOST = 1, 2, 3
+
+@dataclass
+class Address:
+    street_address: str 
+    city: str
+    state: str
+    zip_code: int
+    country: str
+
+@dataclass
+class Person(ABC):
+    name: str 
+    address: Address
+    email: str
+    phone: str 
+    
+```
     
