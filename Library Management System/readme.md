@@ -207,6 +207,16 @@ from dataclasses import dataclass
 import datetime
 
 @dataclass
+class Account(ABC):
+    id: str
+    password: str
+    person: Person
+    status: AccountStatus = AccountStatus.ACTIVE   
+
+    def reset_password(self):
+        None
+
+@dataclass
 class Librarian(Account):
     department= str 
 
