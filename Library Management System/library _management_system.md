@@ -4,7 +4,7 @@
 
 **Table of Contents**
 
-- [System Requirements](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#system-requirements)
+- [System Requirements](#system-requirements)
 - [Use case diagram](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#use-case-diagram)
 - [Class diagram](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#class-diagram)
 - [Activity diagrams](https://github.com/piyushmani/object-oriented-design-python/tree/main/Library%20Management%20System#activity-diagrams)
