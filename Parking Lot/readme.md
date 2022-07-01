@@ -1,10 +1,10 @@
 
 **Table of Contents**
 
-- [System Requirements](https://github.com/piyushmani/object-oriented-design-python/tree/main/Parking%20Lot#system-requirements)
-- [Class diagram](https://github.com/piyushmani/object-oriented-design-python/tree/main/Parking%20Lot#class-diagram)
-- [Activity diagrams](https://github.com/piyushmani/object-oriented-design-python/tree/main/Parking%20Lotm#activity-diagrams)
-- [Code](https://github.com/piyushmani/object-oriented-design-python/tree/main/Parking%20Lot#code)
+- [System Requirements](#system-requirements)
+- [Class diagram](#class-diagram)
+- [Activity diagrams](#activity-diagrams)
+- [Code](#code)
 
 ### still Looking for contributors for help 
 
