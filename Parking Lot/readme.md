@@ -6,8 +6,6 @@
 - [Activity diagrams](#activity-diagrams)
 - [Code](#code)
 
-### still Looking for contributors for help 
-
 ### System Requirements
 - The parking lot should have multiple floors where customers can park their cars.
 - The parking lot should have multiple entry and exit points.
