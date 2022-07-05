@@ -3,6 +3,7 @@
 - [System Requirements](#system-requirements)
 - [Class diagram](#class-diagram)
 - [Activity diagrams](#activity-diagrams)
+- [Sequence diagrams](#sequence-diagrams)
 - [Code](#code)
 
 ### System Requirements
@@ -133,6 +134,8 @@ Guest --|> Member
 
 ### Activity diagram
 ------------
+#### Activity diagram for a user
+
 ```mermaid
 
 %%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
@@ -173,5 +176,23 @@ flowchart TD
     class D,G,I,K question
     linkStyle 0,1,2,3,5,6,8,9,10,11,12,13,14,15,16 stroke:#6F6A68,stroke-width:1.2px,color:#6F6A68
     linkStyle 4,7 stroke:#F3A8A0,stroke-width:1.1px,color:#973126
+    
+ ```
+ 
+### Sequence diagram
+------------
+
+#### sequence diagram for product search
+```mermaid
+
+%%{init: { "theme": "neutral"} }%%
+sequenceDiagram
+    actor A as customer
+    participant C as Catlog
+    participant P as Product
+    A->>C: searchProducts(string)
+    C->>P: getInfo(string)
+    P-->>C: Full Product Info
+    C-->>A: Matching Products Info
     
  ```
