@@ -127,10 +127,51 @@ ProductReview --> Product : Abount
 Member *-- Account
 Admin *-- Account 
 Customer --|> Member
-Guest --|> Member
-
-
-    
-            
+Guest --|> Member    
 
 ```
+
+### Activity diagram
+------------
+```mermaid
+
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
+flowchart TD
+    A[Start] --> B
+    B(Customer open online shopping website) --> C(Customer browses products) 
+    D{{Find Product ??}}
+    E(View product)
+    F(Search product) 
+    G{{Find product in search ??}}
+    H(Add product to cart)
+    I{{More shopping ??}}
+    J(View shopping cart)
+    K{{Update shopping cart ??}}
+    M(Update the shopping cart)
+    L(checkout)
+    Z(End)
+
+    C --> D
+    D -->|Yes| E
+    D --> |No| F
+    F --> G --> |Item found| E
+    G --> |Item not found| F
+    E --> H --> I
+    I -->|Yes| C
+    I -->|No| J --> K
+    K --> |No| L -->Z
+    K --> |Yes|M --> J 
+    
+    
+    classDef se fill:#FDFCFC, color:#283747,stroke:#6F6A68,stroke-width:2px
+    classDef normal fill:#FDFCFC, color:#283747,stroke:#6F6A68,stroke-width:1px
+    classDef question fill:#FDFCFC, color:#283747,stroke:#283747,stroke-width:1.5px,stroke-dasharray:3
+    classDef success fill:#FDFCFC, color:#73C6B6,stroke:#283747
+    classDef error fill:#FDFCFC, color:#EC7063 ,stroke:#283747
+    class A,Z se
+    class B,C,E,F,H,J,L,M normal
+    class D,G,I,K question
+    linkStyle 0,1,2,3,5,6,8,9,10,11,12,13,14,15,16 stroke:#6F6A68,stroke-width:1.2px,color:#6F6A68
+    linkStyle 4,7 stroke:#F3A8A0,stroke-width:1.1px,color:#973126
+    
+ ```
