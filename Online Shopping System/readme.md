@@ -132,7 +132,8 @@ Guest --|> Member
 
 ```
 
-### Activity diagram
+### Activity diagrams
+
 ------------
 #### Activity diagram for a user
 
