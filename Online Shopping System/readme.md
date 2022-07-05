@@ -180,7 +180,8 @@ flowchart TD
     
  ```
  
-### Sequence diagram
+### Sequence diagrams
+
 ------------
 
 #### sequence diagram for product search
