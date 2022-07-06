@@ -198,3 +198,39 @@ sequenceDiagram
     C-->>A: Matching Products Info
     
  ```
+ 
+ ### Code
+------------
+ 
+ > ***Note => In below code the database implementation and payment implementation are skiped.***
+ 
+ ###### Enums and Constants
+ 
+ ```python
+ from enum import Enum
+from dataclasses import dataclass
+
+
+class OrderStatus(Enum):
+  UNSHIPPED, PENDING, SHIPPED, COMPLETED, CANCELED, REFUND_APPLIED = 1, 2, 3, 4, 5, 6
+
+
+class AccountStatus(Enum):
+  ACTIVE, BLOCKED, BANNED, COMPROMISED, ARCHIVED, UNKNOWN = 1, 2, 3, 4, 5, 6
+
+
+class ShipmentStatus(Enum):
+  PENDING, SHIPPED, DELIVERED, ON_HOLD = 1, 2, 3, 4
+
+
+class PaymentStatus(Enum):
+  UNPAID, PENDING, COMPLETED, FILLED, DECLINED, CANCELLED, ABANDONED, SETTLING, SETTLED, REFUNDED = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+@dataclass
+class Address:
+    street_address: str
+    city: str
+    state: str
+    zip_code: int
+    country:str
+ ```
