@@ -234,3 +234,99 @@ class Address:
     zip_code: int
     country:str
  ```
+ 
+###### Account, Customer, Admin, and Guest
+ 
+ ```python
+from dataclasses import dataclass, field
+from abc import ABC
+
+
+@dataclass
+class Address:
+   street_address: str
+   city: str
+   state: str
+   zip_code: int
+   country:str
+  
+@dataclass
+class Account:
+    username: str
+    password: str
+    name: str
+    email: str
+    phone: str
+    shipping_address : Address
+    status: AccountStatus = AccountStatus.ACTIVE
+    credit_cards : list = field(default_factory=list) 
+    bank_accounts : list = field(default_factory=list)
+      
+    
+    def add_product(self, product):
+      None
+  
+    def add_productReview(self, review):
+      None
+  
+    def reset_password(self):
+      None
+
+@dataclass
+class Customer(ABC):
+    cart : list = field(default_factory=list)
+    order : list = field(default_factory=list)
+  
+    def get_shopping_cart(self):
+      return self.__cart
+  
+    def add_item_to_cart(self, item):
+      None
+  
+    def remove_item_from_cart(self, item):
+      None
+  
+class Guest(Customer):
+    def register_account(self):
+      None
+
+
+class Member(Customer):
+    def __init__(self, account):
+      self.__account = account
+
+    def place_order(self, order):
+      None
+
+
+```
+
+###### ProductCategory, Product, and ProductReview
+ 
+ ```python
+from dataclasses import dataclass, field
+from abc import ABC
+
+@dataclass
+class ProductCategory :
+  name: str
+  description: str
+
+@dataclass
+class Product:
+    product_id: int
+    name : str
+    description: str
+    price: float
+    category: ProductCategory
+    available_item_count: int = 0
+
+@dataclass
+class ProductReview:
+    rating: int
+    review: str
+    product = Product
+    reviewer = Member
+
+```
+ 
