@@ -329,4 +329,37 @@ class ProductReview:
     reviewer = Member
 
 ```
+###### Shipment, ShipmentLog, and Notification
+ 
+ ```python
+from dataclasses import dataclass, field
+from abc import ABC
+import datetime.datetime 
+
+@dataclass
+class ShipmentLog:
+    shipment_number: int
+    status: ShipmentStatus = ShipmentStatus.PENDING
+    creation_date = datetime.date = datetime.date.today()
+
+
+class Shipment:
+    shipment_number: int
+    shipment_method: str
+    shipment_date: datetime.date = datetime.date.today()
+    estimated_arrival: datetime.date = datetime.date.today()
+    shipmentLogs : list = field(default_factory=list)
+    def add_shipment_log(self, shipment_log):
+      None
+
+@dataclass
+class Notification(ABC):
+    notification_id: int
+    content: str
+    created_on : datetime.date = datetime.date.today()
+ 
+    def send_notification(self, account):
+      None
+
+```
  
