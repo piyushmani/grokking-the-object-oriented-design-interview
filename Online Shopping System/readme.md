@@ -362,4 +362,30 @@ class Notification(ABC):
       None
 
 ```
+
+###### Search interface and Catalog
  
+ ```python
+from abc import ABC
+from dataclasses import dataclass
+
+class Search(ABC):
+    def search_products_by_name(self, name):
+        None
+    
+    def search_products_by_category(self, category):
+        None
+	
+@dataclass
+class Catalog(Search):
+    product_names: dict = {}
+    product_categories: dict = {}
+    
+    def search_products_by_name(self, name):
+        return self.product_names.get(name)
+    
+    def search_products_by_category(self, category):
+        return self.product_categories.get(category)
+	
+```	
+	
