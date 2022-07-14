@@ -25,5 +25,5 @@
 - Moderators can close a question or undelete an already deleted question.
 - The system should also be able to identify most frequently used tags in the questions.
 
-### Class diagram
+#### Class diagram
 ------------
