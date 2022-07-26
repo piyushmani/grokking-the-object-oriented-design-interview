@@ -136,3 +136,52 @@ classDiagram
     Question ..|> search 
 
 ```
+
+------------
+#### Activity diagram Post a new question
+
+```mermaid
+
+%%{init: { "theme": "forest","flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
+flowchart TD
+    A[Start]
+    B(Member clicks on the 'Ask Question' button)
+    C(Member enters the Title and the Body of the question) 
+    D{{Add tag to the question ??}}
+    E{{Validate question ?}}
+    F{{Does tag exist ?}} 
+    G{{Has enougn reputation ?}}
+    H(Create tag)
+    I{{Tag created successfully? ??}}
+    J(Show error to the user)
+    K(Save and post the question)
+    Z(End)
+
+    A -->B-->C-->D 
+    D -->|Yes| F
+    D -->|No tags| E
+    E --> |validation passed| K
+    E --> |validation failed| C
+    F --> |Yes| E
+    F --> |No | G
+    G --> |Yes| H --> I
+    G --> |No| J
+    I --> |Yes| E
+    I --> |No| J
+    K-->Z
+    J-->Z    
+    classDef se fill:#FDFCFC, color:#283747,stroke:#6F6A68,stroke-width:2px
+    classDef normal fill:#FDFCFC, color:#283747,stroke:#6F6A68,stroke-width:1px
+    classDef question fill:#FDFCFC, color:#283747,stroke:#283747,stroke-width:1.5px,stroke-dasharray:3
+    classDef success fill:#FDFCFC, color:#73C6B6,stroke:#283747
+    classDef error fill:#FDFCFC, color:#EC7063 ,stroke:#283747
+    
+    class A,Z se
+    class B,C,H,K normal
+    class D,F,G,I,E question
+    class J error
+    class K success
+    linkStyle 0,1,2,3,4,5,7,8,9,10,12,14,15 stroke:#6F6A68,stroke-width:1.2px,color:#6F6A68
+    linkStyle 6,13,11 stroke:#F3A8A0,stroke-width:1.1px,color:#973126
+    
+ ```
