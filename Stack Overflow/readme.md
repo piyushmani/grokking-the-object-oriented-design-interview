@@ -185,3 +185,15 @@ flowchart TD
     linkStyle 6,13,11 stroke:#F3A8A0,stroke-width:1.1px,color:#973126
     
  ```
+ 
+ ### Code
+------------
+ 
+ > ***Note => In below code the database implementation and payment implementation are skiped.***
+ 
+ ###### Enums and Constants
+ 
+ ```python
+ from enum import Enum
+from dataclasses import dataclass
+```
