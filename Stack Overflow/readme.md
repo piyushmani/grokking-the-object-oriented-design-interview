@@ -194,6 +194,191 @@ flowchart TD
  ###### Enums and Constants
  
  ```python
- from enum import Enum
+from enum import Enum
+
+class QuestionStatus(Enum):
+    OPEN, CLOSED, ON_HOLD, DELETED = 1, 2, 3, 4
+
+class QuestionClosingRemark(Enum):
+    DUPLICATE, OFF_TOPIC, TOO_BROAD, NOT_CONSTRUCTIVE, NOT_A_REAL_QUESTION, PRIMARILY_OPINION_BASED = 1, 2, 3, 4, 5, 6
+
+class AccountStatus(Enum):
+    ACTIVE, CLOSED, CANCELED, BLACKLISTED, BLOCKED = 1, 2, 3, 4, 5
+```
+
+ ###### Account, Member, Admin, and Moderator
+ 
+ ```python
 from dataclasses import dataclass
+
+@dataclass
+class Account:
+    id: str 
+    password: str
+    name: str 
+    email: str
+    address: str 
+    phone: int
+    status : AccountStatus
+    reputation : int = 0
+
+    def reset_password(self):
+        None
+
+@dataclass
+class Member:
+    account : Account
+    badges : list
+
+    def get_reputation(self):
+        return self.__account.get_reputation()
+
+    def get_email(self):
+        return self.__account.get_email()
+
+    def create_question(self, question):
+        None
+
+    def create_tag(self, tag):
+        None
+
+class Admin(Member):
+    def block_member(self, member):
+        None
+
+    def unblock_member(self, member):
+        None
+
+class Moderator(Member):
+    def close_question(self, question):
+        None
+
+    def undelete_question(self, question):
+        None
+```
+
+ ###### Badge, Tag, and Notification
+ 
+ ```python
+from dataclasses import dataclass,field
+import datetime
+from abc import ABC, abstractmethod
+
+@dataclass
+class Badge:
+    name : str
+    description : str
+
+@dataclass
+class Tag:
+    name : str
+    description : str
+    daily_asked_frequency : int = 0
+    weekly_asked_frequency : int = 0
+
+@dataclass
+class Notification:
+    notification_id : int 
+    content : str
+    created_on: datetime.datetime = datetime.datetime.now()
+ 
+    def send_notification(self):
+        None     
+```
+
+ ###### Photo and Bounty
+ 
+ ```python
+from dataclasses import dataclass,field
+import datetime
+from abc import ABC, abstractmethod
+
+@dataclass
+class Photo:
+    photo_id: int
+    photo_path: int
+    creating_member = Member
+    created_on: datetime.datetime = datetime.datetime.now() 
+
+    def delete(self):
+        None
+        
+@dataclass
+class Bounty:
+    reputation : int
+    expiry: datetime.datetime
+
+    def modify_reputation(self, reputation):
+        None
+```
+
+
+ ###### Question, Comment and Answer
+ 
+ ```python
+from dataclasses import dataclass,field
+import datetime
+from abc import ABC, abstractmethod
+
+
+class Search(ABC):
+  def search(self, query):
+    None
+
+@dataclass
+class Question(Search):
+    title: str
+    description: str
+    bounty: Bounty
+    asking_member : Member
+    view_count : int = 0
+    vote_count : int = 0
+    creation_time: datetime.datetime = datetime.datetime.now()
+    update_time: datetime.datetime = datetime.datetime.now()
+    status: QuestionStatus = QuestionStatus.OPEN
+    closing_remark: QuestionClosingRemark = QuestionClosingRemark.DUPLICATE
+    photos: list = field(default_factory=list)
+    comments: list = field(default_factory=list)
+    answers: list = field(default_factory=list)
+
+    def close(self):
+        None
+
+    def undelete(self):
+        None
+
+    def add_comment(self, comment):
+        None
+
+    def add_bounty(self, bounty):
+        None
+
+    def search(self, query):
+        # return all questions containing the string query in their title or description.
+        None
+
+@dataclass
+class Comment:
+    text: str
+    member = Member
+    flag_count: int = 0
+    vote_count: int = 0
+    creation_time:datetime.datetime = datetime.datetime.now()
+
+    def increment_vote_count(self):
+        None
+
+@dataclass
+class Answer:
+    answer_text:str
+    member: Member
+    accepted: bool = False
+    vote_count:int  = 0
+    flag_count:int  = 0
+    creation_time:datetime.datetime = datetime.datetime.now()
+    photos: list = field(default_factory=list)
+
+    def increment_vote_count(self):
+        None
+
 ```
