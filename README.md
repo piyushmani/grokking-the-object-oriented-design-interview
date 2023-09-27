@@ -20,7 +20,7 @@ Tutorial | Link | working code |
 Library Management System | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Library%20Management%20System">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Library%20Management%20System/code">Link</a> |
 Movie Ticket Booking System | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Movie%20Ticket%20Booking%20System">Link</a> | comming soon !! |
 Online Shopping System | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Online%20Shopping%20System">Link</a> | comming soon !! |
-Parking Lot | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot/code">Link</a> |
+Parking Lot | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot/code"> Link </a> |
 Stack Overflow | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Stack%20Overflow">Link</a> | comming soon !! |
 
 ## How to run example code !
