@@ -2,7 +2,7 @@
 
 - [System Requirements](#system-requirements)
 - [Class diagram](#class-diagram)
-  - [Activity diagram Post a new question](#activity-diagram-post-a-new-question)
+- [Customer searches for a movie](#customer-searches-for-a-movie)
 - [Code](#code)
 
 ### System Requirements
@@ -141,7 +141,7 @@ classDiagram
             
 ```
 ------------
-#### Activity diagram Post a new question
+#### Customer searches for a movie
 
 ```mermaid
 

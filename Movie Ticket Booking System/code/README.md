@@ -13,7 +13,8 @@ This project is a simple movie booking system implemented in Python.
 - `main.py`: Entry point of the application.
 
 ## How to Run
+``` bash
+Python3 main.py
+```
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+<img src="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/blob/main/Movie%20Ticket%20Booking%20System/code/Screenshot.png" width="50%" height="40%">
