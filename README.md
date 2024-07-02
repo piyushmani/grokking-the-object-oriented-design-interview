@@ -21,7 +21,7 @@ Library Management System | <a href="https://github.com/piyushmani/grokking-the-
 Movie Ticket Booking System | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Movie%20Ticket%20Booking%20System">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Movie%20Ticket%20Booking%20System/code">Link</a> |
 Online Shopping System | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Online%20Shopping%20System">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Online%20Shopping%20System/code">Link</a> |
 Parking Lot | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot/code"> Link </a> |
-Stack Overflow | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Stack%20Overflow">Link</a> | comming soon !! |
+Stack Overflow | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Stack%20Overflow">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Stack%20Overflow/code">Link</a> |
 
 ## How to run example code !
 Inatall python Faker library in any python virtual environment and then run the runner file of example.
