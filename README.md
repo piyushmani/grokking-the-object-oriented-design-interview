@@ -22,6 +22,7 @@ Movie Ticket Booking System | <a href="https://github.com/piyushmani/grokking-th
 Online Shopping System | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Online%20Shopping%20System">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Online%20Shopping%20System/code">Link</a> |
 Parking Lot | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Parking%20Lot/code"> Link </a> |
 Stack Overflow | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Stack%20Overflow">Link</a> | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Stack%20Overflow/code">Link</a> |
+Cricinfo | <a href="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/tree/main/Cricinfo">Link</a> | In Progress |
 
 ## How to run example code !
 Inatall python Faker library in any python virtual environment and then run the runner file of example.

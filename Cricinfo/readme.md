@@ -19,7 +19,7 @@
 ------------
 
 ```mermaid
-%%{init: { "theme": "neutral"} }%%
+%%{init: { "theme": "neutral", "look": "handDrawn"} }%%
 classDiagram
     class User {
         -username: String
@@ -213,3 +213,417 @@ classDiagram
             
 ```
 
+#### Activity Diagram (record of a ball)
+------------
+```mermaid
+
+%%{init: { "theme": "forest", "look": "handDrawn",
+"flowchart": {"nodeSpacing":10, "rankSpacing":20,"curve": "basic","useMaxWidth":true}} }%%
+
+flowchart TD
+ subgraph Ball["Ball"]
+        B("Normal")
+        C("Wide")
+        D("No Ball")
+        CA("Add 1 score to batting team")
+        DA("Award next ball a free hit")
+  end
+ subgraph Out["Out"]
+        J("Wicket")
+        K("LBW")
+        L("Caught out")
+        M("Run out")
+  end
+    START["Start"] --> A("System adds  ball to the over")
+    A --> A2("Select ball type")
+    A2 --> Ball
+    Ball --> F{{"Batter gets out ?"}}
+    C --> CA
+    D --> DA
+    DA --> CA
+    F -- No --> G("Record the score made")
+    F -- Yes --> Out
+    Out --> N("Ball commentary added")
+    G --> N
+    N --> P("Ball record saved")
+    P --> END["END"]
+     B:::normal
+     C:::normal
+     D:::normal
+     CA:::normal
+     DA:::normal
+     J:::normal
+     K:::normal
+     L:::normal
+     M:::normal
+     START:::se
+     A:::normal
+     A2:::normal
+     F:::question
+     G:::normal
+     N:::normal
+     P:::normal
+     END:::se
+    classDef success fill:#FDFCFC, color:#73C6B6,stroke:#283747
+    classDef error fill:#FDFCFC, color:#EC7063 ,stroke:#283747
+    classDef question fill:#FDFCFC, color:#283747, stroke:#283747, stroke-width:1.5px, stroke-dasharray:3
+    classDef normal fill:#FDFCFC, color:#283747, stroke:#6F6A68, stroke-width:1px
+    classDef se fill:#FDFCFC, color:#283747, stroke:#6F6A68, stroke-width:2px
+    style Ball stroke:#616161
+    style Out stroke:#616161
+    linkStyle 8 stroke:#D50000
+ 
+ ```
+ 
+### Code
+------------
+> ***Note => In below code the database implementation are skiped.***
+
+ ```python
+
+from datetime import datetime
+from typing import List, Optional
+
+# Enum classes (re-used where appropriate)
+from enum import Enum
+
+class MatchFormat(Enum):
+    ODI = "One Day International"
+    TEST = "Test Match"
+    T20 = "Twenty20"
+
+class PlayerRole(Enum):
+    BATSMAN = "Batsman"
+    BOWLER = "Bowler"
+    ALL_ROUNDER = "All-Rounder"
+    WICKET_KEEPER = "Wicket Keeper"
+
+class DismissalType(Enum):
+    BOWLED = "Bowled"
+    CAUGHT = "Caught"
+    RUN_OUT = "Run Out"
+    LBW = "LBW"
+    STUMPED = "Stumped"
+    HIT_WICKET = "Hit Wicket"
+
+class RunType(Enum):
+    SINGLE = "Single"
+    DOUBLE = "Double"
+    TRIPLE = "Triple"
+    FOUR = "Four"
+    SIX = "Six"
+    LEG_BYE = "Leg Bye"
+    BYE = "Bye"
+    NO_BALL = "No Ball"
+    WIDE = "Wide"
+
+
+# Base User class
+class User:
+    def __init__(self, username: str, email: str, password: str):
+        self.username = username
+        self.email = email
+        self.password = password
+
+    def login(self):
+        print(f"{self.username} logged in.")
+
+    def logout(self):
+        print(f"{self.username} logged out.")
+
+    def browse_matches(self):
+        pass
+
+    def send_notification(self, message: str):
+        print(f"Notification sent to {self.username}: {message}")
+
+
+# Admin class inherits from User
+class Admin(User):
+    def manage_content(self):
+        print(f"Admin {self.username} is managing content.")
+
+
+# Notification class
+class Notification:
+    def __init__(self, notification_id: str, notification_type: str, content: str, recipient: User):
+        self.notification_id = notification_id
+        self.type = notification_type
+        self.content = content
+        self.recipient = recipient
+
+    def send_notification(self):
+        self.recipient.send_notification(self.content)
+
+
+# Match-related classes
+class Venue:
+    def __init__(self, venue_id: str, name: str, location: str, capacity: int):
+        self.venue_id = venue_id
+        self.name = name
+        self.location = location
+        self.capacity = capacity
+
+    def get_venue_details(self):
+        return {"name": self.name, "location": self.location, "capacity": self.capacity}
+
+
+class Series:
+    def __init__(self, series_id: str, name: str, match_format: MatchFormat):
+        self.series_id = series_id
+        self.name = name
+        self.format = match_format
+        self.matches: List['Match'] = []
+
+    def get_series_details(self):
+        return {"name": self.name, "format": self.format.name}
+
+
+class Schedule:
+    def __init__(self, schedule_id: str):
+        self.schedule_id = schedule_id
+        self.matches: List['Match'] = []
+
+    def get_schedule_details(self):
+        return {"schedule_id": self.schedule_id, "matches": len(self.matches)}
+
+
+class PlayerStats:
+    def __init__(self, player: 'Player', matches_played: int, runs_scored: int, wickets_taken: int):
+        self.player = player
+        self.matches_played = matches_played
+        self.runs_scored = runs_scored
+        self.wickets_taken = wickets_taken
+
+    def update_stats(self, runs: int, wickets: int):
+        self.runs_scored += runs
+        self.wickets_taken += wickets
+
+
+class Player:
+    def __init__(self, player_id: str, name: str, age: int, role: PlayerRole):
+        self.player_id = player_id
+        self.name = name
+        self.age = age
+        self.role = role
+        self.stats = PlayerStats(self, 0, 0, 0)
+
+    def get_player_stats(self):
+        return {"matches_played": self.stats.matches_played, "runs_scored": self.stats.runs_scored, "wickets_taken": self.stats.wickets_taken}
+
+
+class Team:
+    def __init__(self, team_id: str, name: str):
+        self.team_id = team_id
+        self.name = name
+        self.players: List[Player] = []
+
+    def get_team_details(self):
+        return {"team_id": self.team_id, "name": self.name, "players": [player.name for player in self.players]}
+
+
+class Wicket:
+    def __init__(self, batsman_out: Player, bowler: Player, dismissal_type: DismissalType, fielder: Optional[Player]):
+        self.batsman_out = batsman_out
+        self.bowler = bowler
+        self.dismissal_type = dismissal_type
+        self.fielder = fielder
+
+
+class Run:
+    def __init__(self, run_type: RunType, runs: int):
+        self.run_type = run_type
+        self.runs = runs
+
+
+class Ball:
+    def __init__(self, ball_number: int, bowler: Player, batsman: Player, run: Run, wicket: Optional[Wicket] = None):
+        self.ball_number = ball_number
+        self.bowler = bowler
+        self.batsman = batsman
+        self.run = run
+        self.wicket = wicket
+
+    def record_ball(self):
+        return {"ball_number": self.ball_number, "runs": self.run.runs, "wicket": self.wicket is not None}
+
+
+class Over:
+    def __init__(self, over_number: int, bowler: Player):
+        self.over_number = over_number
+        self.bowler = bowler
+        self.balls: List[Ball] = []
+
+    def update_stats(self):
+        return sum(ball.run.runs for ball in self.balls), len([ball for ball in self.balls if ball.wicket])
+
+
+class Innings:
+    def __init__(self, innings_id: str, team_batting: Team):
+        self.innings_id = innings_id
+        self.team_batting = team_batting
+        self.score = 0
+        self.wickets_lost = 0
+        self.overs_played = 0.0
+        self.overs: List[Over] = []
+
+    def update_score(self):
+        for over in self.overs:
+            runs, wickets = over.update_stats()
+            self.score += runs
+            self.wickets_lost += wickets
+
+
+class Scorecard:
+    def __init__(self, match: 'Match'):
+        self.match = match
+        self.runs_scored_team1 = 0
+        self.runs_scored_team2 = 0
+        self.wickets_lost_team1 = 0
+        self.wickets_lost_team2 = 0
+
+    def generate_scorecard(self):
+        return {
+            "team1": {"runs": self.runs_scored_team1, "wickets": self.wickets_lost_team1},
+            "team2": {"runs": self.runs_scored_team2, "wickets": self.wickets_lost_team2}
+        }
+
+
+class Match:
+    def __init__(self, match_id: str, teams: List[Team], venue: Venue, series: Series, schedule: Schedule):
+        self.match_id = match_id
+        self.teams = teams
+        self.venue = venue
+        self.series = series
+        self.schedule = schedule
+        self.innings: List[Innings] = []
+        self.umpires: List['Umpire'] = []
+        self.scorecard = Scorecard(self)
+
+    def get_match_details(self):
+        return {
+            "match_id": self.match_id,
+            "venue": self.venue.get_venue_details(),
+            "series": self.series.get_series_details(),
+            "teams": [team.get_team_details() for team in self.teams]
+        }
+
+    def update_score(self):
+        for inning in self.innings:
+            inning.update_score()
+
+
+# Additional Classes (Playing11, PointsTable, Commentator, TeamStat)
+class Playing11:
+    def __init__(self, team: Team):
+        self.team = team
+        self.players: List[Player] = []
+
+    def get_playing11(self):
+        return [player.name for player in self.players]
+
+
+class PointsTable:
+    def __init__(self):
+        self.teams: List[Team] = []
+        self.points: dict = {}
+
+    def update_points(self, team: Team, points: int):
+        self.points[team.team_id] = points
+
+
+class Commentator:
+    def __init__(self, commentator_id: str, name: str):
+        self.commentator_id = commentator_id
+        self.name = name
+
+    def provide_commentary(self, text: str):
+        print(f"{self.name}: {text}")
+
+
+class TeamStat:
+    def __init__(self, team: Team):
+        self.team = team
+        self.matches_played = 0
+        self.wins = 0
+        self.losses = 0
+
+    def get_team_stats(self):
+        return {"team": self.team.name, "matches_played": self.matches_played, "wins": self.wins, "losses": self.losses}
+
+# Commentary class
+class Commentary:
+    def __init__(self, comment_id: str, text: str, author: User, timestamp: datetime):
+        self.comment_id = comment_id
+        self.text = text
+        self.author = author
+        self.timestamp = timestamp
+
+    def post_comment(self):
+        return f"{self.author.username}: {self.text} (Posted at {self.timestamp})"
+
+
+# News class
+class News:
+    def __init__(self, news_id: str, headline: str, content: str, author: User, timestamp: datetime):
+        self.news_id = news_id
+        self.headline = headline
+        self.content = content
+        self.author = author
+        self.timestamp = timestamp
+
+    def get_news_details(self):
+        return {"headline": self.headline, "content": self.content, "author": self.author.username, "timestamp": self.timestamp}
+
+
+# Tournament class
+class Tournament:
+    def __init__(self, tournament_id: str, name: str, format: MatchFormat):
+        self.tournament_id = tournament_id
+        self.name = name
+        self.format = format
+        self.matches: List[Match] = []
+
+    def get_tournament_details(self):
+        return {"name": self.name, "format": self.format.name}
+
+    def get_matches(self):
+        return [match.get_match_details() for match in self.matches]
+
+
+# Umpire class
+class Umpire:
+    def __init__(self, umpire_id: str, name: str, role: str):
+        self.umpire_id = umpire_id
+        self.name = name
+        self.role = role
+
+    def assign_match(self, match: Match):
+        match.umpires.append(self)
+
+
+# Abstract classes for Odi, Test, and T20
+from abc import ABC, abstractmethod
+
+class MatchFormatBase(ABC):
+    @abstractmethod
+    def get_format_name(self):
+        pass
+
+
+class Odi(MatchFormatBase):
+    def get_format_name(self):
+        return "One Day International"
+
+
+class Test(MatchFormatBase):
+    def get_format_name(self):
+        return "Test Match"
+
+
+class T20(MatchFormatBase):
+    def get_format_name(self):
+        return "Twenty20"
+
+
+ ```
