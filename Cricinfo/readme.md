@@ -269,9 +269,9 @@ flowchart TD
     classDef question fill:#FDFCFC, color:#283747, stroke:#283747, stroke-width:1.5px, stroke-dasharray:3
     classDef normal fill:#FDFCFC, color:#283747, stroke:#6F6A68, stroke-width:1px
     classDef se fill:#FDFCFC, color:#283747, stroke:#6F6A68, stroke-width:2px
-    style Ball stroke:#616161
-    style Out stroke:#616161
-    linkStyle 8 stroke:#D50000
+    style Ball stroke:#616161,fill:#FFFFFF
+    style Out stroke:#616161,fill:#FFFFFF
+    linkStyle 8 stroke:#D50000,fill:none
  
  ```
  
