@@ -3,8 +3,8 @@
 
 ###### 1st innings
 
-<img src="https://github.com/piyushmani/object-oriented-design-python/blob/a426c5935d670b7df8bb1b45a42d34474fb0abf2/Library%20Management%20System/images/library.png" width="50%" height="40%">
+<img src="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/blob/main/Cricinfo/code/image2.png" width="80%" height="70%">
 
 ###### 2nd innings
 
-<img src="https://github.com/piyushmani/object-oriented-design-python/blob/a426c5935d670b7df8bb1b45a42d34474fb0abf2/Library%20Management%20System/images/library.png" width="50%" height="40%">
+<img src="https://github.com/piyushmani/grokking-the-object-oriented-design-interview/blob/main/Cricinfo/code/image1.png" width="80%" height="70%">
